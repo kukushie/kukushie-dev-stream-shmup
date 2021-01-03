@@ -7,6 +7,7 @@ public class PlayerGun : MonoBehaviour
     public PlayerShot shotPrefab;
     public float shotAngleDeg;
     public float cooldown;
+    public AudioSource shotSound;
 
     private float cooldownEndTime = 0f;
 
@@ -20,8 +21,7 @@ public class PlayerGun : MonoBehaviour
         }
 
         // Fire shot.
-        PlayerShot shot = Instantiate<PlayerShot>(this.shotPrefab);
-        shot.transform.position = this.transform.position;
+        PlayerShot shot = Instantiate<PlayerShot>(this.shotPrefab, this.transform.position, Quaternion.identity);
         shot.angle = this.shotAngleDeg * Mathf.Deg2Rad;
         this.cooldownEndTime = Time.time + this.cooldown;
     }

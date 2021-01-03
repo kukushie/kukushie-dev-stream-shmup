@@ -34,8 +34,7 @@ public class EnemyGun : MonoBehaviour
 
     public void Fire()
     {
-        EnemyBullet newBullet = Instantiate<EnemyBullet>(this.bulletPrefab);
-        newBullet.transform.position = this.transform.position;
+        EnemyBullet newBullet = Instantiate<EnemyBullet>(this.bulletPrefab, this.transform.position, Quaternion.identity);
         newBullet.angle = this.currentAngle;
         newBullet.speed = this.currentBulletSpeed;
     }

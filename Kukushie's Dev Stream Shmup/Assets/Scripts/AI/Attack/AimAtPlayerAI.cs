@@ -19,7 +19,6 @@ public class AimAtPlayerAI : MonoBehaviour
         Vector2 ourPosition = this.gun.transform.position;
         float angleToPlayerDeg = V2.AngleTo(ourPosition, playerPosition) * Mathf.Rad2Deg;
         float maxTurnDeg = rateOfTurnDeg * Time.deltaTime;
-        Debug.Log(angleToPlayerDeg);
         this.gun.TurnToAngleDeg(angleToPlayerDeg, maxTurnDeg);
     }
 }

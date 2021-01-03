@@ -71,6 +71,8 @@ MonoBehaviour:
   damage: 1
   speed: 2000
   angle: 0
+  explosionPrefab: {fileID: 890196387877435029, guid: e681b9966b99de24cafea758e30412d3, type: 3}
+  explosionSoundPrefab: {fileID: 7668080479318171218, guid: 5c4317fbfb7da0b498cea896b81bb0fc, type: 3}
 --- !u!114 &680147814972115550
 MonoBehaviour:
   m_ObjectHideFlags: 0

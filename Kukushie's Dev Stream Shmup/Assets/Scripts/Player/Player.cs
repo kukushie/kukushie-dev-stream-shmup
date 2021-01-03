@@ -14,8 +14,9 @@ public class Player : MonoBehaviour
 
     public int maxHP;
     public float invincibilityDurationOnHit;
-
     public PlayerGraphics graphics;
+    public ParticleSystem explosionPrefab;
+    public AudioSource explosionSoundPrefab;
 
     private int currentHP;
 
@@ -35,6 +36,11 @@ public class Player : MonoBehaviour
     {
         if (this.invincibilityEndTime <= Time.time)
         {
+            EnemyBullet enemyBullet = collision2d.rigidbody.GetComponent<EnemyBullet>();
+            if (enemyBullet)
+            {
+                enemyBullet.HandleCollisionWithPlayer(this);
+            }
             this.SustainDamage(1);
         }
     }
@@ -60,6 +66,9 @@ public class Player : MonoBehaviour
         {
             c2d.enabled = false;
         }
+
+        Instantiate(this.explosionPrefab, this.transform.position, Quaternion.identity);
+        Instantiate(this.explosionSoundPrefab, this.transform.position, Quaternion.identity);
 
         // Temporary: just destroy game object.
         // In future: show exploding animation and play sound.

@@ -7,6 +7,7 @@ public class EnemyBullet : MonoBehaviour
     public float speed;
     public float angle;
     private Rigidbody2D rb;
+    public ParticleSystem explosionPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,8 @@ public class EnemyBullet : MonoBehaviour
         {
             c2d.enabled = false;
         }
+
+        Instantiate(this.explosionPrefab, this.transform.position, Quaternion.identity);
 
         // Temporary: just destroy game object.
         // In future: show exploding animation and play sound.

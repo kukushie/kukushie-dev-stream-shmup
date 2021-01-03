@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    const string BLEND_PARAM_HORIZONTAL_VELOCITY = "Horizontal Velocity";
+
     public float speed = 10f;
     public float width;
     public float height;
     public PlayerGun gun;
+    public Animator bodyAnimator;
 
     private PlayerInput input;
     private Rigidbody2D rb;
@@ -42,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
             newPosition.y = Mathf.Clamp(newPosition.y, halfHeight, Stage.instance.height - halfHeight);
 
             this.rb.MovePosition(newPosition);
+            this.bodyAnimator.SetFloat(BLEND_PARAM_HORIZONTAL_VELOCITY, movement.x);
+        } else {
+            this.bodyAnimator.SetFloat(BLEND_PARAM_HORIZONTAL_VELOCITY, 0f);
         }
 
         // Do firing.

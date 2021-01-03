@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int maxHP;
+    public ParticleSystem explosionPrefab;
+    public AudioSource explosionSoundPrefab;
 
     private int currentHP;
 
@@ -39,6 +41,9 @@ public class Enemy : MonoBehaviour
         {
             c2d.enabled = false;
         }
+
+        Instantiate(this.explosionPrefab, this.transform.position, Quaternion.identity);
+        Instantiate(this.explosionSoundPrefab, this.transform.position, Quaternion.identity);
 
         // Temporary: just destroy game object.
         // In future: show exploding animation and play sound.

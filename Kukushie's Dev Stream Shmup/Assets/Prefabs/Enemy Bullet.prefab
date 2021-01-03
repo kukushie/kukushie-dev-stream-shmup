@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   angle: 0
+  explosionPrefab: {fileID: 6793383392767851519, guid: a061e6738f6d29443809b91f7f57b148, type: 3}
 --- !u!114 &8294205454818799745
 MonoBehaviour:
   m_ObjectHideFlags: 0

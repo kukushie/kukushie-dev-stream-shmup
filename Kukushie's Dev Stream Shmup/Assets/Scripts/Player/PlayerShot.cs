@@ -8,6 +8,8 @@ public class PlayerShot : MonoBehaviour
     public float speed;
     public float angle;
     private Rigidbody2D rb;
+    public ParticleSystem explosionPrefab;
+    public AudioSource explosionSoundPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,11 @@ public class PlayerShot : MonoBehaviour
         foreach (Collider2D c2d in GetComponentsInChildren<Collider2D>())
         {
             c2d.enabled = false;
+        }
+        
+        Instantiate(this.explosionPrefab, this.transform.position, Quaternion.identity);
+        if (this.explosionSoundPrefab) {
+            Instantiate(this.explosionSoundPrefab, this.transform.position, Quaternion.identity);
         }
 
         // Temporary: just destroy game object.
